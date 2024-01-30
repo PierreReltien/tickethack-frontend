@@ -1,5 +1,5 @@
 
-
+//affichage des trajets lorsqu'on clique sur le bouton search
 document.querySelector('#search').addEventListener('click', function () {
 
 	const departure = document.querySelector('#departure').value;
@@ -11,7 +11,7 @@ document.querySelector('#search').addEventListener('click', function () {
 
 		.then(response => response.json())
 		.then(data => {
-			if (data.result) {
+			if (data.trip) {
 
 				for (let i = 0; i < data.trip.length; i++) {
 
@@ -28,12 +28,38 @@ document.querySelector('#search').addEventListener('click', function () {
 				document.querySelector('#departure').value = '';
 				document.querySelector('#arrival').value = '';
 				document.querySelector('#data').value = '';
+
+				updadeAddCartEventListener()
+
 			}
 
 		});
 });
 
 
+//ajout d'un trajet dans le cart 
+function updadeAddCartEventListener() {
+
+	for (let i = 0; i < document.querySelectorAll('.button').length; i++) {
+		document.querySelectorAll('.button')[i].addEventListener('click',
+			function () {
+				fetch(`http://localhost:3000/cart/`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ trip }),
+				}).then(response => response.json())
+					.then(data => {
+						console.log(data)
+						window.location.href = '/cart.html'
+
+					}
+
+					)
+			}
+
+		)
+	}
+}
 
 // fetch('http://localhost:3000/trip')
 // 	.then(response => response.json())
@@ -90,12 +116,12 @@ document.querySelector('#search').addEventListener('click', function () {
 // document.querySelector('#addCity').addEventListener('click', function () {
 // 	const cityName = document.querySelector('#cityNameInput').value;
 
-// 	fetch('http://localhost:3000/weather', {
-// 		method: 'POST',
-// 		headers: { 'Content-Type': 'application/json' },
-// 		body: JSON.stringify({ cityName }),
-// 	}).then(response => response.json())
-// 		.then(data => {
+// fetch('http://localhost:3000/weather', {
+// 	method: 'POST',
+// 	headers: { 'Content-Type': 'application/json' },
+// 	body: JSON.stringify({ cityName }),
+// }).then(response => response.json())
+// 	.then(data => {
 // 			if (data.result) {
 // 				document.querySelector('#cityList').innerHTML += `
 // 			<div class="cityContainer">
