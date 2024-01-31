@@ -1,4 +1,3 @@
-
 //affichage des trajets lorsqu'on clique sur le bouton search
 document.querySelector('#search').addEventListener('click', function () {
 
@@ -25,9 +24,8 @@ document.querySelector('#search').addEventListener('click', function () {
 
 					document.querySelector('#resultDiv').innerHTML += `
 				<div class="choices">
-				<div>${data.trip[i].departure}></div>
-				<div>${data.trip[i].arrival}></div>
-				<div>${data.trip[i].date}></div>
+				<div>${data.trip[i].departure}>${data.trip[i].arrival}</div>
+				<div>${moment(data.trip[i].date).format("LT")}></div>
 				<div>${data.trip[i].price}></div>
 				<button class="button">Book</button>
 				</div>
