@@ -1,0 +1,16 @@
+{
+    "name": "tickend-backend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www"
+    },
+    "dependencies": {
+
+    },
+    "devDependencies": {
+      "jest": "^28.0.1",
+      "supertest": "^6.2.3"
+    }
+  }
+  

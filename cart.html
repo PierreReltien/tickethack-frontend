@@ -4,20 +4,21 @@
 <head>
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <title>Tickethack</title>
 </head>
 
 <body>
 
   <div id="container2">
-    
+
     <div id="header">
-      <div id = "tickethackDiv">
+      <div id="tickethackDiv">
         <a href="index.html" id="tickethack">Tickethack</a>
       </div>
-  
-      <div id ="menuDiv">
+
+      <div id="menuDiv">
         <a href="cart.html" id="cart">Cart</a>
         <a href="booking.html" id="booking">Bookings</a>
       </div>
@@ -26,17 +27,19 @@
     <div id="main2">
       <div id="selectedDiv">
         <div id="top">
-            <h5 id="titleBasket">My cart</h5>
-            <div id="basket">
-                <p> <span id = 'departureBasket'>Paris</span> > <span id = 'arrivalBasket'> Lyon</span> </p>
-                <p id ='departureBasket'>20:09</p>
-                <p id ='priceBasket'> <span id='priceTrip'>103</span>€</p> 
-                <button id='cancelBasket'>X</button>      
+          <h5 id="titleBasket">My cart</h5>
+          <div id="cont">
+            <div class="basket">
+              <p> <span class='departureBasket'>Paris</span> > <span class='arrivalBasket'> Lyon</span> </p>
+              <p class='timeBasket'>20:09</p>
+              <p class='priceBasket'> <span id='priceTrip'>103</span>€</p>
+              <button class='cancelBasket'>X</button>
             </div>
+          </div>
         </div>
         <div id="bottom">
-            <p id='totalBottom'>Total : <span id ='priceBottom'>103</span>€</p>
-            <button id='purchaseBottom'>Purchase</button>
+          <p id='totalBottom'>Total : <span id='priceBottom'>103</span>€</p>
+          <button id='purchaseBottom'>Purchase</button>
         </div>
       </div>
 
@@ -44,8 +47,8 @@
 
   </div>
 
-
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js">moment.locale('fr')</script>
+  <script type="module" src="cart.js"></script>
 </body>
 
 </html>
