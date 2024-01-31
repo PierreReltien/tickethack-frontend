@@ -23,20 +23,20 @@ document.querySelector('#search').addEventListener('click', function () {
 				for (let i = 0; i < data.trip.length; i++) {
 
 					document.querySelector('#resultDiv').innerHTML += `
-				<div class="choices">
-				<div>${data.trip[i].departure}>${data.trip[i].arrival}</div>
-				<div>${moment(data.trip[i].date).format("LT")}></div>
-				<div>${data.trip[i].price}></div>
-				<button class="button">Book</button>
+				<div class="choices" id="${data.trip[i]._id}">
+				<p class="departureTrip">${data.trip[i].departure}</p>><p class="arrivalTrip">${data.trip[i].arrival}</p>
+				<p class="dateTrip">${moment(data.trip[i].date).format("LT")}></p>
+				<p class="priceTrip">${data.trip[i].price}</p>
+				<button class="bookButton">Book</button>
 				</div>
 				`
+					updadeAddCartEventListener(data.trip[i])
 				}
 
 				document.querySelector('#departure').value = '';
 				document.querySelector('#arrival').value = '';
 				document.querySelector('#date').value = '';
 
-				updadeAddCartEventListener()
 
 			} else {
 				document.querySelector('#resultDiv').innerHTML += `<div> No trip available this day</div>`
@@ -47,19 +47,17 @@ document.querySelector('#search').addEventListener('click', function () {
 
 
 //ajout d'un trajet dans le cart 
-function updadeAddCartEventListener() {
+function updadeAddCartEventListener(tripData) {
 
-	for (let i = 0; i < document.querySelectorAll('.button').length; i++) {
-		document.querySelectorAll('.button')[i].addEventListener('click',
+	for (let i = 0; i < document.querySelectorAll('.bookButton').length; i++) {
+		document.querySelectorAll('.bookButton')[i].addEventListener('click',
 			function () {
-				fetch(`http://localhost:3000/cart/`, {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({ trip }),
-				}).then(response => response.json())
+				
+
+				fetch(`http://localhost:3000/cart/${document.querySelectorAll('.bookButton')[i].parentNode.id}`).then(response => response.json())
 					.then(data => {
 						console.log(data)
-						window.location.href = '/cart.html'
+						//window.location.href = '/cart.html'
 
 					}
 
