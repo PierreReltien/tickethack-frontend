@@ -3,21 +3,30 @@
 document.querySelector('#search').addEventListener('click', function () {
 
 	const departure = document.querySelector('#departure').value;
+	console.log('departure', departure)
 	const arrival = document.querySelector('#arrival').value;
-	let dateStr = document.querySelector('#date').value;
-	let date = new Date(dateStr).getTime();
+	console.log('arrival', arrival)
+	let date = document.querySelector('#date').value;
+	console.log('date', date)
+	// let date = new Date(dateStr).getTime();
 
 	fetch(`http://localhost:3000/trip/${departure}/${arrival}/${date}`)
 
 		.then(response => response.json())
 		.then(data => {
+
+			// console.log(data)
+
 			if (data.trip) {
+				console.log(data.trip)
+				console.log(data.trip.length)
 
 				for (let i = 0; i < data.trip.length; i++) {
 
-					document.querySelector('#found').innerHTML += `
-				<div class='choices"><div>${data.trip[i].departure}></div>
-				><div>${data.trip[i].arrival}></div>
+					document.querySelector('#resultDiv').innerHTML += `
+				<div class="choices">
+				<div>${data.trip[i].departure}></div>
+				<div>${data.trip[i].arrival}></div>
 				<div>${data.trip[i].date}></div>
 				<div>${data.trip[i].price}></div>
 				<button class="button">Book</button>
@@ -27,10 +36,12 @@ document.querySelector('#search').addEventListener('click', function () {
 
 				document.querySelector('#departure').value = '';
 				document.querySelector('#arrival').value = '';
-				document.querySelector('#data').value = '';
+				document.querySelector('#date').value = '';
 
 				updadeAddCartEventListener()
 
+			} else {
+				document.querySelector('#resultDiv').innerHTML += `<div> No trip available this day</div>`
 			}
 
 		});
