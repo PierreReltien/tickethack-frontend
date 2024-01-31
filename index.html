@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Tickethack</title>
+</head>
+
+<body>
+
+  <div id="container">
+    
+    <div id="header">
+      <div id = "tickethackDiv">
+        <a href="index.html" id="tickethack">Tickethack</a>
+      </div>
+  
+      <div id ="menuDiv">
+        <a href="cart.html" id="cart">Cart</a>
+        <a href="booking.html" id="booking">Bookings</a>
+      </div>
+    </div>
+
+    <div id="main">
+      <div id ="title">
+        <h1>Explore the world effortless by train!</h1>
+        <h2>Compare, book and enjoy cheap prices for train tickets: your journey start on Tickethack</h2>
+      </div>
+      <div id="content">
+          <div id="searchDiv">
+            <input id="departure" type="text" name="message" placeholder="Départ" />
+            <input id="arrival" type="text" name="message" placeholder="Arrivée"/>
+            <input id="date" type="date" name="message" />
+            <button id="search">Search</button>
+          </div>
+          <div id="resultDiv">
+            <div id="trainDiv">
+              <img id="train" src="images/train.png" alt="">
+            </div>
+            <div id="time">
+              <h3>It's time to book your futur trip.</h3>
+            </div>
+          </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>
